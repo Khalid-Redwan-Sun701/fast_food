@@ -1,5 +1,6 @@
 export const appwriteConfig = {
-  endpoint: "https://cloud.appwrite.io/v1", // Your Appwrite Endpoint
-  platform: "com.khalidFood.fastFood",
-  projectId: process.env.NEXT_PUBLIC_APPWRITE_PROJECT_ID,
+  endpoint:
+    process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT,
+  platform: "com.khalidFood.fastFoodApp",
+  projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID,
 };
