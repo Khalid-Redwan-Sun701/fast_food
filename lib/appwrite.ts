@@ -74,6 +74,7 @@ export const getCurrentUser = async () => {
     );
     
     if (!currentUser) throw new Error("User not found");
+    return currentUser.documents[0];
    
   } catch (error) {
     throw new Error(error as string);
