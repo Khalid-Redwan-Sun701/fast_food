@@ -1,7 +1,9 @@
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
+
 import cn from "clsx";
 import { Fragment } from "react";
+
 import {
   FlatList,
   Image,
@@ -9,6 +11,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -76,6 +79,8 @@ export default function Index() {
             <CartButton />
           </View>
         )}
+       
+
       />
     </SafeAreaView>
   );
