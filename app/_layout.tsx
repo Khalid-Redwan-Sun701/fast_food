@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 import * as Sentry from '@sentry/react-native';
+import useAuthStore from "@/store/auth.store";
 
 Sentry.init({
   dsn: 'https://e839208cdfd063572261cde11b5eae71@o4510493799284736.ingest.us.sentry.io/4510647450599424',
@@ -25,6 +26,12 @@ Sentry.init({
 });
 
 export default Sentry.wrap(function RootLayout() {
+
+  const  {isLoading, fetchAuthenticatedUser}  = useAuthStore();
+
+
+
+
   const [fontsLoaded, error] = useFonts({
     "Quicksand-Bold": require("../assets/fonts/Quicksand-Bold.ttf"),
     "Quicksand-SemiBold": require("../assets/fonts/Quicksand-SemiBold.ttf"),
@@ -37,6 +44,12 @@ export default Sentry.wrap(function RootLayout() {
     if (error) throw error;
     if (fontsLoaded) SplashScreen.hideAsync();
   }, [fontsLoaded, error]);
+
+  useEffect(() => {
+    fetchAuthenticatedUser();
+  }, []);
+
+  if (!fontsLoaded || isLoading)  return null;
 
   return (
     <SafeAreaProvider>
